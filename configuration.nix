@@ -1,4 +1,3 @@
-# Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -12,7 +11,7 @@
     ];
 
 
-  # Kernel Setup - configured for intel ice lake stability
+  # Kernel Setup - Configured for Intel Ice Lake Stability
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Disable Panel Self Refresh (PSR) & Framebuffer Compression (FBC) to prevent HDMI hotplug freezes
@@ -64,13 +63,14 @@
   # Desktop & Display Drivers
   services.xserver.enable = true;
 
-  # Force clean generic modesetting driver instead of legacy intel drivers
+  # Force clean generic modesetting driver instead of legacy Intel drivers
   services.xserver.videoDrivers = [ "modesetting" ];
   hardware.graphics.enable = true;
 
-  # Enable KDE
+  # Enable Desktop Environments and Login Manager.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.xserver.desktopManager.lxqt.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -148,6 +148,6 @@
     unrar
   ];
 
-  # Nix version
+  # NixOS version
   system.stateVersion = "26.05";
 }
